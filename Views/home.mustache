@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+<head><title>{{title}}</title></head>
+<body>
+  <h1>{{title}}</h1>
+  
+  <!-- Navigation -->
+  <nav>
+    <a href="/">Home</a> |
+    <a href="/profile/Guest">Profile</a>
+  </nav>
+
+  <!-- Form -->
+  <form action="/submit-form" method="POST">
+    <input type="text" name="message" placeholder="Type a message" required />
+    <p>You’ve visited this page {{views}} time(s) this session.</p>
+    <button type="submit">Submit</button>
+  </form>
+</body>
+</html>
