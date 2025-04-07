@@ -11,19 +11,19 @@ app.set('views', __dirname + '/views');
 
 app.use(bodyParser.urlencoded({ extended: false }));
 
-// Navigation: Home
+
 app.get('/', (req, res) => {
   res.render('home', { title: 'Home Page' });
 });
 
 const session = require('express-session');
 
-// Session middleware
+// middleware
 app.use(session({
-  secret: 'mysecretkey', // replace with env variable in real apps
+  secret: 'mysecretkey', 
   resave: false,
   saveUninitialized: true,
-  cookie: { maxAge: 60000 } // 1 min for demo
+  cookie: { maxAge: 60000 } 
 }));
 
 // Count page views
@@ -34,20 +34,20 @@ app.use((req, res, next) => {
   next();
 });
 
-// Custom middleware: Logs method, URL, and timestamp
+// Custom middleware
 app.use((req, res, next) => {
     const timestamp = new Date().toISOString();
     console.log(`[${timestamp}] ${req.method} ${req.url}`);
-    next(); // move to the next middleware or route
+    next(); 
   });
 
-// Navigation: Profile with Route Param
+// Route 
 app.get('/profile/:username', (req, res) => {
   const { username } = req.params;
   res.render('profile', { username });
 });
 
-// Form POST handler
+// 
 app.post('/submit-form', (req, res) => {
   console.log('Form Data:', req.body);
   res.send('Form submitted successfully!');
